@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable=no>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Lazyman Remote Control</title>
   <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
@@ -18,27 +18,17 @@
     </div>
     <div class="button-area">
       <div class="row">
-          <button id="playBtn" class="play">Play</button>
           <button id="volumeUpBtn" class="val-plus"> ＋ </button>
       </div>
       <div class="row">
-          <button id="fullscreen" class="fullscreen">
-            Expand
-          </button>    
-          <button id="volumeDownBtn" class="val-minus"> － </button>     
-      </div>
-      <div class="row">
           <button id="prevVideoBtn" class="triangle ch-minus"> 〈｜ </button>
+          <button id="playBtn" class="play">Play</button>
           <button id="nextVideoBtn" class="triangle ch-plus"> ｜〉 </button>    
       </div>
+      <div class="row">
+        <button id="volumeDownBtn" class="val-minus"> － </button>     
     </div>
-    <!-- <div class="button-area">
-        <div id="volumeUpBtn" class="triangle val-plus"></div>
-        <div id="volumeDownBtn" class="triangle val-minus"></div>
-        <div id="playBtn" class="play">| |</div>
-        <div id="nextVideoBtn" class="triangle ch-plus"></div>
-        <div id="prevVideoBtn" class="triangle ch-minus"></div>
-    </div> -->
+    </div>
     <div class="contact">
       <span>powerd by lazy man</span>
     </div>

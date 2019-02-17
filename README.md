@@ -10,7 +10,10 @@ To help you control the video when you wanna be LAZY.
 
 1. Play / Pause
 2. Volume up / Volume down
-3. Next video / Previous video 
+3. Next video / Previous video
+4. One container has only one unique remote control
+5. Block duplicate user (remote control)
+6. Block desktop mode (remote control)
 
 ### TODO
 

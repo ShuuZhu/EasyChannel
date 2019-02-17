@@ -6,6 +6,7 @@ body {
   background: 	black;
   font-family: 'Roboto Slab', serif;
   color: White;
+  touch-action: manipulation;
 }
 .root {
   display: flex;
