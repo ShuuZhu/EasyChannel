@@ -13,29 +13,35 @@
 </head>
 
 <body>
-    <div class="root">
-      <div class="head-bar">
-        <h1>S-TV</h1>
-        <span>Start to enjoy video easier.</span>
-      </div>
-      <div class="container">
-        <div class="tv">
-          <div class="tv-container">
-              <iframe id="myVideo" width="588" height="332" src="https://www.youtube.com/embed?listType=playlist&list=PL3XXfjD1FPQ3WFSbVKwL2Z1Dj54UiSJRr&enablejsapi=1&html5=1&&loop=1"
-              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>      
-          </div>
-          <div class="tv-controller">
-              <div class="qrcode-block">
-                  <div>
-                      <span>Get your remote control:</span>
-                  </div>
-                </div>        
+  <div class="root">
+    <div class="head-bar">
+      <h1>S-TV</h1>
+      <span>Start to enjoy video easier.</span>
+    </div>
+    <div class="container">
+      <div class="tv">
+        <div class="tv-container">
+          <iframe id="myVideo" width="588" height="332" src="https://www.youtube.com/embed?listType=playlist&list=PL3XXfjD1FPQ3WFSbVKwL2Z1Dj54UiSJRr&enablejsapi=1&html5=1&&loop=1"
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <div class="tv-controller">
+          <div class="qrcode-block">
+            <div>
+              <span>Get your remote control:</span>
+            </div>
           </div>
         </div>
       </div>
-      <div class="footer-bar">
-        <span>Contact me: arbugi29144146@gmail.com</span>
-      </div>
     </div>
-  </body>
+    <div class="footer-bar">
+      <span>Contact me: arbugi29144146@gmail.com</span>
+    </div>
+  </div>
+  <div id="error-block" class="error-block" style="visibility:hidden;">
+    <h1 id="error-title"></h1>
+    <span id="error-content"></span>
+  </div>
+</body>
+
 </html>

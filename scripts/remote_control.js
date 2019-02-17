@@ -1,14 +1,14 @@
 //initialize
 
 const config = {
-  databaseURL: 'https://lazymanremotecontrol.firebaseio.com/', // < 改成你的
+  databaseURL: 'https://lazymanremotecontrol.firebaseio.com/',
   storageBucket: 'bucket.appspot.com'
 }
 
 const errorMsg = {
   controlNotFound: {
-    title: 'No Remote Control Fonud!!',
-    content: `Your video page sholud be closed or refresh, 
+    title: 'No Remote Control Found!!',
+    content: `Your video page should be closed or refresh, 
               please open new video page and get uniq remote control key.`
   },
   duplicateUser: {
@@ -25,14 +25,15 @@ const errorMsg = {
 
 
 window.firebase.initializeApp(config)
-let isPlaying = false, 
-    isFullscreen = false, 
-    nowVolume = 50, 
-    nowRef = null,
-    database = window.firebase.database()
-    
+let isPlaying = false,
+  nowVolume = 50,
+  nowRef = null,
+  database = window.firebase.database(),
+  lastTouchEnd = 0
+
+
 window.onload = () => {
-  if(!navigator.userAgent.match(/iPhone|Android/)){
+  if (!navigator.userAgent.match(/iPhone|Android/)) {
     displayErrorBlock(errorMsg.usingDesktop)
   }
   nowRef = getNowRef()
@@ -44,34 +45,33 @@ window.onload = () => {
 //Binding
 
 const blockDoubleTapAndPinch = () => {
-  document.addEventListener('touchmove', function (event) {
-    if (event.scale !== 1) { event.preventDefault(); }
-  }, false);
-  
-  var lastTouchEnd = 0;
-  document.addEventListener('touchend', function (event) {
-    var now = (new Date()).getTime();
+  document.addEventListener('touchmove', event => {
+    if (event.scale !== 1) { event.preventDefault() }
+  }, false)
+
+  document.addEventListener('touchend', event => {
+    let now = (new Date()).getTime()
     if (now - lastTouchEnd <= 300) {
-      event.preventDefault();
+      event.preventDefault()
     }
-    lastTouchEnd = now;
-  }, false);
+    lastTouchEnd = now
+  }, false)
 }
 
 const bindingCloseEvent = () => {
   let event = navigator.userAgent.match(/iPhone|iPad/) ? 'unload' : 'beforeunload'
   window.addEventListener(event, () => {
-   nowRef.child('inUse').set(false)
+    nowRef.child('inUse').set(false)
   })
 }
 
-const bindingRefEvent = (ref) => {
+const bindingRefEvent = ref => {
   ref.once('value', res => {
     if (res.exists()) {
       bindingPlayBtn()
       bindingVolumeBtn()
       bindingChannelBtn()
-      showBtnArea()    
+      showBtnArea()
     } else {
       displayErrorBlock(errorMsg.controlNotFound)
     }
@@ -84,7 +84,7 @@ const bindingRefEvent = (ref) => {
   })
 
   ref.child('inUse').once('value', res => {
-    if(res.val()) {
+    if (res.val()) {
       displayErrorBlock(errorMsg.duplicateUser)
     } else {
       ref.child('inUse').set(true)
@@ -144,8 +144,8 @@ const changeVolume = (changeNum) => {
   nowRef.child('volume').set((nowVolume > 100 ? 100 : nowVolume < 0 ? 0 : nowVolume))
 }
 
-const changeChannel = (stauts) => {
-  nowRef.child('channelStatus').set((stauts))
+const changeChannel = (status) => {
+  nowRef.child('channelStatus').set((status))
   changePlayingState(true)
   videoPlay(true)
 }
@@ -160,7 +160,7 @@ const changePlayingState = (status) => {
 }
 
 const displayErrorBlock = (msg) => {
-  const errorBlock = document.getElementById('error-block');
+  const errorBlock = document.getElementById('error-block')
   errorBlock.style.setProperty('visibility', 'visible')
   errorBlock.children[0].textContent = msg.title
   errorBlock.children[1].textContent = msg.content

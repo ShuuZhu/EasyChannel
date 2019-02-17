@@ -14,6 +14,7 @@ To help you control video easier
 4. One container has only one unique remote control
 5. Block duplicate user (remote control)
 6. Block desktop mode (remote control)
+7. Block mobile mode (container)
 
 ### TODO
 
