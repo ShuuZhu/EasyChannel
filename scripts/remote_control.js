@@ -83,8 +83,7 @@ const bindingPlayBtn = () => {
   })
 
   nowRef.child('playPause').on('value', res => {
-    isPlaying = res.val()
-    playBtn.textContent = isPlaying ? 'Pause' : 'Play'
+    changePlayingState(res.val())
   })
 }
 
@@ -127,6 +126,13 @@ const changeVolume = (changeNum) => {
 
 const changeChannel = (stauts) => {
   nowRef.child('channelStatus').set((stauts))
+  changePlayingState(true)
+  videoPlay(true)
+}
+
+const changePlayingState = (status) => {
+  isPlaying = status
+  playBtn.textContent = status ? 'Pause' : 'Play'
 }
 
 const displayErrorBlock = (msg) => {

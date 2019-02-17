@@ -1,6 +1,6 @@
 //initialize
 
-const config = {
+const firebaseConfig = {
   databaseURL: 'https://lazymanremotecontrol.firebaseio.com/',
   storageBucket: 'bucket.appspot.com'
 }
@@ -12,7 +12,7 @@ const initailConfig = {
   inUse: false
 }
 
-window.firebase.initializeApp(config)
+window.firebase.initializeApp(firebaseConfig)
 
 let player = null, 
     nowRef = null, 
@@ -52,7 +52,7 @@ const getNewUniqRef = () => {
 const buildQrcode = (postID) => {
   const img = document.createElement('img')
   const imgSize = window.screen.width  > 1366 ? 150 : 120
-  url = `https://192.168.0.15:8080/lazyman_remote_control/pages/remote_control?id=${postID}`
+  url = `${window.location.href}pages/remote_control?id=${postID}`
   img.src = `http://chart.apis.google.com/chart?cht=qr&chl=${url}&chs=${imgSize}x${imgSize}`
   
   return img
