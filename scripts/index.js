@@ -52,7 +52,7 @@ const getNewUniqRef = () => {
 const buildQrcode = (postID) => {
   const img = document.createElement('img')
   const imgSize = window.screen.width  > 1366 ? 150 : 120
-  url = `${window.location.href}pages/remote_control?id=${postID}`
+  url = `${window.location.origin}/RemoteControl/pages/remote_control?id=${postID}`
   img.src = `http://chart.apis.google.com/chart?cht=qr&chl=${url}&chs=${imgSize}x${imgSize}`
   
   return img

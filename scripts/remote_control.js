@@ -22,6 +22,8 @@ const errorMsg = {
   }
 }
 
+
+
 window.firebase.initializeApp(config)
 let isPlaying = false, 
     isFullscreen = false, 
@@ -36,9 +38,25 @@ window.onload = () => {
   nowRef = getNowRef()
   bindingRefEvent(nowRef)
   bindingCloseEvent()
+  blockDoubleTapAndPinch()
 }
 
-//function
+//Binding
+
+const blockDoubleTapAndPinch = () => {
+  document.addEventListener('touchmove', function (event) {
+    if (event.scale !== 1) { event.preventDefault(); }
+  }, false);
+  
+  var lastTouchEnd = 0;
+  document.addEventListener('touchend', function (event) {
+    var now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, false);
+}
 
 const bindingCloseEvent = () => {
   let event = navigator.userAgent.match(/iPhone|iPad/) ? 'unload' : 'beforeunload'
@@ -115,6 +133,8 @@ const bindingChannelBtn = () => {
   })
 }
 
+// Action
+
 const videoPlay = (status) => {
   nowRef.child('playPause').set(status)
 }
@@ -132,7 +152,11 @@ const changeChannel = (stauts) => {
 
 const changePlayingState = (status) => {
   isPlaying = status
-  playBtn.textContent = status ? 'Pause' : 'Play'
+  const playIcon = document.getElementById('playIcon')
+  const pauseIcon = document.getElementById('pauseIcon')
+
+  playIcon.style.setProperty('display', isPlaying ? 'none' : 'block')
+  pauseIcon.style.setProperty('display', isPlaying ? 'block' : 'none')
 }
 
 const displayErrorBlock = (msg) => {

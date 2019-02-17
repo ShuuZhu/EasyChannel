@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+body {
+  margin:0px;
+  height: 100vh;
+  font-family: 'Roboto Slab', serif;
+}
+.root{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+}
+
+.head-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
+  background: transparent;
+  color: white;
+  font-size:20px;
+  position: relative;
+  z-index: 10;
+}
+
+
+.container {
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.qrcode-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 18px;
+  margin: 20px;
+}
+
+.qrcode-block div {
+  margin: 15px;
+}
+
+.tv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: grey;
+  border: 30px solid grey;
+  border-radius: 30px;
+  width: 980px;
+}
+
+.tv .tv-container {
+  border: 15px solid black;
+  border-radius: 30px;
+  background: black;
+}
+.tv .tv-controller {
+  display: flex;
+  justify-content: center;
+  align-items:flex-end ;
+}
+
+.tv .tv-controller img {
+  border-radius: 50%;
+  border: 10px solid black;
+  background: black;
+}
+
+
+iframe {
+  border: 15px solid black;
+  border-radius: 30px;
+}
+
+.footer-bar{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  align-content: space-between;
+  background: transparent;
+  color: white;
+}
+
+.footer-bar span {
+  margin: 15px;
+}

@@ -8,6 +8,13 @@ body {
   color: White;
   touch-action: manipulation;
 }
+
+img {
+  margin: auto;
+  width: 24px;
+  height: 24px;
+}
+
 .root {
   display: flex;
   flex-direction: column;
@@ -47,22 +54,13 @@ body {
   background: #00FFFF;
 }
 
-.playBtnImg, .fullscreenImg {
-  width: 60%;
-  height: 60%;
-  margin: auto;
-}
-
-.fullscreen {
-  background: #9F88FF;
-}
-
 .row {
   display: flex;
   justify-content: center;
   align-content: space-around;
   margin: 10px;
 }
+
 
 
 .error-block {
