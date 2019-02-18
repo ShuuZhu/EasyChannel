@@ -9,7 +9,7 @@
   <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
   <script src="../scripts/remote_control.js"></script>
   <link rel="stylesheet" href="../css/remote_control.css">
-  <link rel="stylesheet" href="../css/common.css">  
+  <link rel="stylesheet" href="../css/common.css">
 </head>
 
 <body>
@@ -19,33 +19,33 @@
     </div>
     <div class="button-area">
       <div class="row">
-          <button id="volumeUpBtn" class="val-plus">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE9SURBVEhL7ZSxLgVREIYnUSgUIvR4AwpEoSDeSIIKiUIvt/MOIkSiEHpewDNwr4aKBN9/1iRjstncu7bjS77c888mM3v37Fn7p2v2v3/FPfZwuaQOUPPPalnQ2r3CeWyNN48DVvAQn1D1Prb6N7F5HOBM4xnq2jPO4dDk5nHAOW5WSxvDU9T1WxWGoa65dLT+wJ2SzCbxEVVfVyETmzTp7OIbqramAuyh8klJidikycgWqnZdktkiKj+UlIhNmozMoGqvJZmNY8w/iE2ajPiAl5LMJlC5swH5ES2gciePSJv8jnqTfJP9zavd5MwB5ubS0VrNt0sym0I/1bWvaR11QxwdtI1qWQ6an+YbFUYhD8looy9Q1wY4iyMThzireIT6yKmux7OErfEhjg+Ul9jqzjMa4tzhMf7qrv88Zl+cpqHD4ac1xAAAAABJRU5ErkJggg==">
-          </button>
+        <button id="volumeUpBtn" class="val-plus">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE9SURBVEhL7ZSxLgVREIYnUSgUIvR4AwpEoSDeSIIKiUIvt/MOIkSiEHpewDNwr4aKBN9/1iRjstncu7bjS77c888mM3v37Fn7p2v2v3/FPfZwuaQOUPPPalnQ2r3CeWyNN48DVvAQn1D1Prb6N7F5HOBM4xnq2jPO4dDk5nHAOW5WSxvDU9T1WxWGoa65dLT+wJ2SzCbxEVVfVyETmzTp7OIbqramAuyh8klJidikycgWqnZdktkiKj+UlIhNmozMoGqvJZmNY8w/iE2ajPiAl5LMJlC5swH5ES2gciePSJv8jnqTfJP9zavd5MwB5ubS0VrNt0sym0I/1bWvaR11QxwdtI1qWQ6an+YbFUYhD8looy9Q1wY4iyMThzireIT6yKmux7OErfEhjg+Ul9jqzjMa4tzhMf7qrv88Zl+cpqHD4ac1xAAAAABJRU5ErkJggg==">
+        </button>
       </div>
       <div class="row">
-          <button id="prevVideoBtn" class="triangle ch-minus">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF8SURBVGhD7di/K0ZRHMfxS0QMGEwmm0xSBkZlNcts9Q+ITVZlsLBKGWVSRqNsMinFIoNBUfLj/e1x6nY6znOv++OcU99Pvep2Ovfb8xme7rk302g0Go2mhfRgzGMEdWYaW53LeiM/9NvjHnWkH5t4x5ks1J02isziGmZmckUGsYMP5GcmVWQBt3DNTKLIMPbwCdc8EX2RJdzBNScv2iKjOMQXXDNsURZZxiNc9/4lqiLjOIbrnm6iKbKKJ7j2FxG8yARO4dpXRrAich5bw8vvWlVBijzjwlqrKkiRJmgRX7RIBVrEl25Fip6fyghSRJ4jK6jyJLcFKyKRs9URXHvKClrERE67D3DtLSqKIhK55wD//f9EU8RkEUXeCG3RFZHIO/oufO/otiiLmMzjBq4ZtqiLSAawDfs7li36IiYzuIJrnkimiKQPG3iDPTOpIiZTuER+ZpJFJL1YxytkZiNFhnDisY+6MolzNFKk7ciHjLnOpUaj0Wg0TSfLfgAx55cljOxOMQAAAABJRU5ErkJggg==">
-          </button>
-          <button id="playBtn" class="play">
-            <img id="playIcon" style="display: none;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB9SURBVEhLYxgFo2A7EKtAmLQB/4H4JxD3ADEPSIDaAGQBDD8D4iQgZgRiqgFkC2D4OBBbADFVADYLQPgfEM8FYkkgpghgMxwZfwbiYiBmA2KyADZDseHbQOwBxCQDbIZhwzSzgGZBRNNIplkypVlGo2lRQfPCbhQMecDAAABegVOteyX3ZgAAAABJRU5ErkJggg==">
-            <img id="pauseIcon" style="display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABISURBVEhL7cyxCQAADAJB91866W1ugOTA6sG826bW1EkH6qQDddKBOulAnXSgTjpQJx2okw7USQfqpAN10oE66UCddKD+bkgWwiZvkelZ0CwAAAAASUVORK5CYII=">
-          </button>
-          <button id="nextVideoBtn" class="triangle ch-plus">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC+SURBVEhL7dEhC8JAGIfxqQiKwWCyGWxWv4XdbjP7AUwGm19CMFoFo8m4aLOKYBEEMejzMg+O4zbG9g4U9sCPHcfGPywoy1r1+yysDUbRMbEV9pYWUnXAG2t05CIm857RRqrsDy8Yw5fKgLFFF3aqA+KGCSqQ1AeMHXoobEDccXXuVAd8/mvghLNzpzLwwhJNuO/lHggxhElt4Ik56rBTGThiAF+5Bh6YoSYXMWUeWKAfHRObQn640UDZTxUEHzpGmQINqIy1AAAAAElFTkSuQmCC">   
-          </button>    
+        <button id="prevVideoBtn" class="triangle ch-minus">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF8SURBVGhD7di/K0ZRHMfxS0QMGEwmm0xSBkZlNcts9Q+ITVZlsLBKGWVSRqNsMinFIoNBUfLj/e1x6nY6znOv++OcU99Pvep2Ovfb8xme7rk302g0Go2mhfRgzGMEdWYaW53LeiM/9NvjHnWkH5t4x5ks1J02isziGmZmckUGsYMP5GcmVWQBt3DNTKLIMPbwCdc8EX2RJdzBNScv2iKjOMQXXDNsURZZxiNc9/4lqiLjOIbrnm6iKbKKJ7j2FxG8yARO4dpXRrAich5bw8vvWlVBijzjwlqrKkiRJmgRX7RIBVrEl25Fip6fyghSRJ4jK6jyJLcFKyKRs9URXHvKClrERE67D3DtLSqKIhK55wD//f9EU8RkEUXeCG3RFZHIO/oufO/otiiLmMzjBq4ZtqiLSAawDfs7li36IiYzuIJrnkimiKQPG3iDPTOpIiZTuER+ZpJFJL1YxytkZiNFhnDisY+6MolzNFKk7ciHjLnOpUaj0Wg0TSfLfgAx55cljOxOMQAAAABJRU5ErkJggg==">
+        </button>
+        <button id="playBtn" class="play">
+          <img id="playIcon" style="display: none;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB9SURBVEhLYxgFo2A7EKtAmLQB/4H4JxD3ADEPSIDaAGQBDD8D4iQgZgRiqgFkC2D4OBBbADFVADYLQPgfEM8FYkkgpghgMxwZfwbiYiBmA2KyADZDseHbQOwBxCQDbIZhwzSzgGZBRNNIplkypVlGo2lRQfPCbhQMecDAAABegVOteyX3ZgAAAABJRU5ErkJggg==">
+          <img id="pauseIcon" style="display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABISURBVEhL7cyxCQAADAJB91866W1ugOTA6sG826bW1EkH6qQDddKBOulAnXSgTjpQJx2okw7USQfqpAN10oE66UCddKD+bkgWwiZvkelZ0CwAAAAASUVORK5CYII=">
+        </button>
+        <button id="nextVideoBtn" class="triangle ch-plus">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC+SURBVEhL7dEhC8JAGIfxqQiKwWCyGWxWv4XdbjP7AUwGm19CMFoFo8m4aLOKYBEEMejzMg+O4zbG9g4U9sCPHcfGPywoy1r1+yysDUbRMbEV9pYWUnXAG2t05CIm857RRqrsDy8Yw5fKgLFFF3aqA+KGCSqQ1AeMHXoobEDccXXuVAd8/mvghLNzpzLwwhJNuO/lHggxhElt4Ik56rBTGThiAF+5Bh6YoSYXMWUeWKAfHRObQn640UDZTxUEHzpGmQINqIy1AAAAAElFTkSuQmCC">
+        </button>
       </div>
       <div class="row">
         <button id="volumeDownBtn" class="val-minus">
           <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACRSURBVEhL7Y3BCcNADASvkoBx+ozLcAfOI3WZkCZiSecFcciHOKSfBwZpP7vlJprXeVPg8n9940F5yoAuDx9oy0MHrHI98CGf9fVhlVkC/r/kLMlBW3QlQH5LcqBLegLknyQHuqQnQE4f2CQ50CU9Af87OUkaYCHbchas5KO+41gj4bQjKeiRNDCSCo/cRFLKATwkcFJe7MrQAAAAAElFTkSuQmCC">
-        </button>     
-    </div>
+        </button>
+      </div>
     </div>
     <div class="contact">
       <span>Help you enjoy this</span>
     </div>
   </div>
-  <div id="error-block" class="error-block" style="visibility:hidden;" >
+  <div id="error-block" class="error-block" style="visibility:hidden;">
     <h1 id="error-title"></h1>
     <span id="error-content"></span>
   </div>

@@ -5,3 +5,14 @@ body {
   font-family: 'Roboto Slab', serif;
   background: black;
 }
+.qrcode-block {
+  background: #f26060;
+  border: 10px solid #f26060;
+}
+.toolbox {
+  background-color: #f26060;
+}
+
+.toolbox:after {
+  border-left-color: #f26060;
+}

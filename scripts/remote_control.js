@@ -29,17 +29,20 @@ let isPlaying = false,
   nowVolume = 50,
   nowRef = null,
   database = window.firebase.database(),
-  lastTouchEnd = 0
+  lastTouchEnd = 0,
+  device = navigator.userAgent
 
 
 window.onload = () => {
-  if (!navigator.userAgent.match(/iPhone|Android/)) {
+  if (!device.match(/iPhone|Android/)) {
     displayErrorBlock(errorMsg.usingDesktop)
   }
   nowRef = getNowRef()
   bindingRefEvent(nowRef)
   bindingCloseEvent()
-  blockDoubleTapAndPinch()
+  if(device.match(/iPhone|iPad/)) {
+    blockDoubleTapAndPinch()
+  }
 }
 
 //Binding
@@ -51,7 +54,7 @@ const blockDoubleTapAndPinch = () => {
 
   document.addEventListener('touchend', event => {
     let now = (new Date()).getTime()
-    if (now - lastTouchEnd <= 300) {
+    if (now - lastTouchEnd <= 100) {
       event.preventDefault()
     }
     lastTouchEnd = now
@@ -59,7 +62,7 @@ const blockDoubleTapAndPinch = () => {
 }
 
 const bindingCloseEvent = () => {
-  let event = navigator.userAgent.match(/iPhone|iPad/) ? 'unload' : 'beforeunload'
+  let event = device.match(/iPhone|iPad/) ? 'unload' : 'beforeunload'
   window.addEventListener(event, () => {
     nowRef.child('inUse').set(false)
   })

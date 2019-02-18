@@ -12,24 +12,11 @@ const initailConfig = {
   inUse: false
 }
 
-window.firebase.initializeApp(firebaseConfig)
 
 let player = null,
   nowRef = null,
-  database = window.firebase.database()
-
-window.onbeforeunload = () => {
-  database.ref().child(nowRef.key).remove()
-}
-
-window.onload = () => {
-  if (navigator.userAgent.match(/iPhone|Android/)) {
-    displayErrorBlock({
-      title: 'Does not support Mobile!',
-      content: 'please use Desktop device to open this page.'
-    })
-  }
-}
+  database = null
+  
 
 //Youtube API Function
 
@@ -39,6 +26,7 @@ const onPlayerReady = event => {
   document.querySelector('.qrcode-block')
     .appendChild(buildQrcode(nowRef.key))
 
+  bindingControlerHandler()
   bindingPlayBtnHandler()
   bindingVolumeHandler()
   bindingChannelHandler()
@@ -52,7 +40,25 @@ const onYouTubeIframeAPIReady = () => {
   })
 }
 
-window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady
+//initialize
+
+const initialize = () => {
+  window.firebase.initializeApp(firebaseConfig)
+  window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady
+  database = window.firebase.database()
+  window.onbeforeunload = () => {
+    database.ref().child(nowRef.key).remove()
+  }
+  
+  window.onload = () => {
+    if (navigator.userAgent.match(/iPhone|Android/)) {
+      displayErrorBlock({
+        title: 'Does not support Mobile!',
+        content: 'please use Desktop device to open this page.'
+      })
+    }
+  }
+}
 
 //setting function
 
@@ -109,9 +115,56 @@ const bindingChannelHandler = () => {
   })
 }
 
-//load youtube api
+const bindingControlerHandler = () => {
+  const remoteControl = document.querySelector('.control')
+  remoteControl.addEventListener('click', () => {
+    const qrcodeBlock = document.querySelector('.qrcode-block')
+    if(qrcodeBlock.className.match(/active/)) {
+      qrcodeBlock.classList.remove('active')
+    } else {
+      qrcodeBlock.classList.add('active')
+    }
+  })
+}
 
-let tag = document.createElement('script')
-tag.src = 'https://www.youtube.com/iframe_api'
-let firstScriptTag = document.getElementsByTagName('script')[0]
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+/* To Do: User can input their own link to play
+
+const bindingURLInputHandler = (val) => {
+  if(val.match('//www.youtube.com/embed')) {
+    createIframePlayer(val)
+    document.querySelector('.url-form').classList.add('hide')
+  } else {
+    alert('Please input correct url!!')
+  }
+  return false
+}
+
+const createIframePlayer = (val) => {
+  const container = document.querySelector('screen')
+  const iframe = document.createElement('iframe')
+  iframe.src = `${val}&enablejsapi=1&html5=1&&loop=1`
+  iframe.id = 'myVideo'
+  iframe.width = '588'
+  iframe.height = '332'
+  iframe.setAttribute('frameborder', '0')
+  iframe.setAttribute('allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture')
+  iframe.setAttribute('allowfullscreen')
+  container.appendChild(iframe)
+  return false
+}
+
+*/
+
+//load youtube api
+const loadingYTApi = () => {
+  let tag = document.createElement('script')
+  tag.src = 'https://www.youtube.com/iframe_api'
+  let firstScriptTag = document.getElementsByTagName('script')[0]
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+}
+
+
+
+
+initialize()
+loadingYTApi()

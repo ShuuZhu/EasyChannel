@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
-body {
+
+.qrcode-block {
+  background: #FFDD55;
+  border: 10px solid #FFDD55;
+}
+.toolbox {
+  background-color: #FFDD55;
+}
+
+.toolbox:after {
+  border-left-color: #FFDD55;
+}
+  body {
   margin:0px;
   height: 100vh;
   font-family: 'Roboto Slab', serif;
