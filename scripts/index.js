@@ -72,7 +72,7 @@ const getNewUniqRef = () => database.ref().push()
 const buildQrcode = (postID) => {
   const img = document.createElement('img')
   const imgSize = window.screen.width > 1366 ? 150 : 120
-  const url = `${window.location.origin}/RemoteControl/pages/remote_control?id=${postID}`
+  const url = `${window.location.origin}/EasyChannel/pages/remote_control?id=${postID}`
   img.src = `http://chart.apis.google.com/chart?cht=qr&chl=${url}&chs=${imgSize}x${imgSize}`
 
   return img

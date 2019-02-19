@@ -44,8 +44,8 @@ http-server -S
 1. ~~User can input their own link in container and play (DONE)~~
 2. Fullscreen (must resolve user gesture problem)
 3. Search video
-4. Firebase database permission management
-5. uglify and minify js code by package tool
+4. Permission management of firebase database
+5. Uglify and minify js code by package tool
 
 
 ### References
