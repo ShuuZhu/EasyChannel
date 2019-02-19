@@ -16,3 +16,41 @@ body {
 .toolbox:after {
   border-left-color: #f26060;
 }
+
+.customer-input {
+  width:100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.customer-input input {
+  border-radius: 10px;
+  width: 80%;
+  height: 50%;
+  font-size: 20px;
+  padding: 10px;
+  border: 1px solid black;
+  font-family: 'Roboto Slab', serif;
+}
+
+.customer-input button {
+  width: 20%;
+  height: 50%;
+  font-size: 15px;
+  border: 1px solid #5599FF;
+  background: #5599FF;
+  border-radius: 10px;
+  font-family: 'Roboto Slab', serif;
+}
+
+iframe{
+  display: none;
+  transition: display .5s;
+}
+
+.show {
+  display: block;
+}

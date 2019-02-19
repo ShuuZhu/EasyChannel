@@ -5,7 +5,7 @@ const firebaseConfig = {
   storageBucket: 'bucket.appspot.com'
 }
 
-const initailConfig = {
+const initialConfig = {
   playPause: false,
   volume: 50,
   channelStatus: 'none',
@@ -14,15 +14,17 @@ const initailConfig = {
 
 
 let player = null,
-  nowRef = null,
-  database = null
-  
+    nowRef = null,
+    database = null,
+    hasLoaded = false
+
 
 //Youtube API Function
 
-const onPlayerReady = event => {
+const onPlayerReady = () => {
+  if (hasLoaded) return
   nowRef = getNewUniqRef()
-  nowRef.set(initailConfig)
+  nowRef.set(initialConfig)
   document.querySelector('.qrcode-block')
     .appendChild(buildQrcode(nowRef.key))
 
@@ -30,6 +32,7 @@ const onPlayerReady = event => {
   bindingPlayBtnHandler()
   bindingVolumeHandler()
   bindingChannelHandler()
+  hasLoaded = true;
 }
 
 const onYouTubeIframeAPIReady = () => {
@@ -45,11 +48,13 @@ const onYouTubeIframeAPIReady = () => {
 const initialize = () => {
   window.firebase.initializeApp(firebaseConfig)
   window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady
+  window.loadingYTApi = loadingYTApi
+
   database = window.firebase.database()
-  window.onbeforeunload = () => {
-    database.ref().child(nowRef.key).remove()
+  window.onbeforeunload = (e) => {
+    if (nowRef) database.ref().child(nowRef.key).remove()
   }
-  
+
   window.onload = () => {
     if (navigator.userAgent.match(/iPhone|Android/)) {
       displayErrorBlock({
@@ -119,7 +124,7 @@ const bindingControlerHandler = () => {
   const remoteControl = document.querySelector('.control')
   remoteControl.addEventListener('click', () => {
     const qrcodeBlock = document.querySelector('.qrcode-block')
-    if(qrcodeBlock.className.match(/active/)) {
+    if (qrcodeBlock.className.match(/active/)) {
       qrcodeBlock.classList.remove('active')
     } else {
       qrcodeBlock.classList.add('active')
@@ -127,35 +132,8 @@ const bindingControlerHandler = () => {
   })
 }
 
-/* To Do: User can input their own link to play
-
-const bindingURLInputHandler = (val) => {
-  if(val.match('//www.youtube.com/embed')) {
-    createIframePlayer(val)
-    document.querySelector('.url-form').classList.add('hide')
-  } else {
-    alert('Please input correct url!!')
-  }
-  return false
-}
-
-const createIframePlayer = (val) => {
-  const container = document.querySelector('screen')
-  const iframe = document.createElement('iframe')
-  iframe.src = `${val}&enablejsapi=1&html5=1&&loop=1`
-  iframe.id = 'myVideo'
-  iframe.width = '588'
-  iframe.height = '332'
-  iframe.setAttribute('frameborder', '0')
-  iframe.setAttribute('allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture')
-  iframe.setAttribute('allowfullscreen')
-  container.appendChild(iframe)
-  return false
-}
-
-*/
-
 //load youtube api
+
 const loadingYTApi = () => {
   let tag = document.createElement('script')
   tag.src = 'https://www.youtube.com/iframe_api'
@@ -164,7 +142,4 @@ const loadingYTApi = () => {
 }
 
 
-
-
 initialize()
-loadingYTApi()

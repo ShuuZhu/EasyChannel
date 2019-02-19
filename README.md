@@ -1,10 +1,9 @@
-## Youtube Player with Remote Control
-
+## Easy Channel ( Youtube player with remote controller )
 To help you control video easier
 
 ### Description
 
-這是一個能透過遠端裝置控制影片的網頁，讓使用者有如操作一般遙控器與播放器溝通，控制影片也不再只能透過播放器所屬裝置，解決了人與播放器之間距離的問題。
+Easy Channel 能夠用手機控制 Desktop browser 達到遙控器的效果，讓使用者有更好的影片觀賞體驗，並解決了人與裝置間因距離無法溝通而產生的問題。
 
 ### Clone
 
@@ -37,14 +36,17 @@ http-server -S
 5. Block duplicate user (remote control)
 6. Block desktop mode (remote control)
 7. Block mobile mode (container)
+8. User can input their own link in container and play (Add 2/19)
+
 
 ### TODO
 
-1. User can input their own link in container and play
+1. ~~User can input their own link in container and play (DONE)~~
 2. Fullscreen (must resolve user gesture problem)
 3. Search video
 4. Firebase database permission management
 5. uglify and minify js code by package tool
+
 
 ### References
 
