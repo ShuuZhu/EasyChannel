@@ -121,6 +121,7 @@ const bindingVolumeBtn = () => {
 
   nowRef.child('volume').on('value', res => {
     nowVolume = res.val()
+    displayVolume(nowVolume)
   })
 }
 
@@ -181,5 +182,9 @@ const getNowRef = () => {
 
 const showBtnArea = () => {
   document.querySelector('.button-area').style.setProperty('visibility', 'visible')
+}
+
+const displayVolume = (value) => {
+  document.querySelector('.volume-value').textContent = value
 }
 
