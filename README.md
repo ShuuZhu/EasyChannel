@@ -8,7 +8,7 @@ Easy Channel 能夠用手機控制 Desktop browser 達到遙控器的效果，�
 ### Clone
 
 ```
-git clone git@github.com:ShuuZhu/RemoteControl.git
+git clone git@github.com:ShuuZhu/EasyChannel.git
 ```
 
 ### Enviroment
