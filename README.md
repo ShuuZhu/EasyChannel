@@ -56,4 +56,9 @@ http-server -S
 - [Google Charts API](https://developers.google.com/chart/?hl=zh-TW) (To Generate QR code)
 
 
+### Demo
+
+[EasyChannel]( https://shuuzhu.github.io/EasyChannel/)
+
+
 
